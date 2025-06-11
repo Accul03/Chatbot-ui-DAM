@@ -65,25 +65,11 @@
   <!-- 🧠 Chat-Frame -->
   <div class="chat-iframe-container" id="chatContainer">
     <button class="chat-close" id="closeChat">×</button>
-    <iframe src="embed/index.html"></iframe>
+    <iframe src="embed/index.html" title="Chatbot Widget"></iframe>
   </div>
 
   <!-- 📜 JS für Toggle -->
-  <script>
-    const chatToggle = document.getElementById('chatToggle');
-    const chatContainer = document.getElementById('chatContainer');
-    const closeChat = document.getElementById('closeChat');
-
-    chatToggle.addEventListener('click', () => {
-      chatContainer.style.display = 'block';
-      chatToggle.style.display = 'none';
-    });
-
-    closeChat.addEventListener('click', () => {
-      chatContainer.style.display = 'none';
-      chatToggle.style.display = 'flex';
-    });
-  </script>
+  <script src="script-loader.js"></script>
 </body>
 </html>
-<script src="script-loader.js"></script>
+
