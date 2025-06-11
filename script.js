@@ -1,3 +1,7 @@
+function parseMarkdown(text) {
+  return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const sendMessage = document.getElementById('sendMessage');
   const userInput = document.getElementById('userInput');
