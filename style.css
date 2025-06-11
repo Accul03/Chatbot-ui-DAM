@@ -5,7 +5,7 @@ body {
   background-color: #f6f6f6;
 }
 
-/* 🔵 Chat-Button (Floating) */
+/* 🔵 Chat-Button (in index.html – Bubble) */
 .chat-button {
   position: fixed;
   bottom: 20px;
@@ -27,25 +27,14 @@ body {
   color: #fff;
 }
 
-/* 💬 Chat-Container */
+/* 💬 Chat-Container (embed only) */
 .chat-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 360px;
-  height: 550px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  background: white;
+  border-radius: 12px;
   overflow: hidden;
-  z-index: 1001;
-  animation: fadeIn 0.3s ease-out;
-}
-
-.hidden {
-  display: none;
 }
 
 /* 🧢 Header */
@@ -60,15 +49,7 @@ body {
   align-items: center;
 }
 
-.chat-header button {
-  background: none;
-  border: none;
-  font-size: 20px;
-  color: white;
-  cursor: pointer;
-}
-
-/* 📦 Body */
+/* 📦 Chat-Body */
 .chat-body {
   padding: 16px;
   flex: 1;
@@ -113,7 +94,7 @@ body {
   margin-right: 4px;
 }
 
-/* 👋 Welcome-Message */
+/* 👋 Welcome */
 .chat-welcome {
   text-align: center;
   font-size: 14px;
@@ -122,13 +103,16 @@ body {
   margin-bottom: 12px;
 }
 
-/* 💬 Chat-Verlauf */
+/* 💬 Nachrichtenverlauf */
 .chat-messages {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1;
+  overflow-y: auto;
 }
 
+/* Nachricht */
 .chat-message {
   max-width: 80%;
   padding: 10px 14px;
@@ -136,7 +120,6 @@ body {
   font-size: 14px;
   line-height: 1.4;
   word-wrap: break-word;
-  display: inline-block;
 }
 
 .chat-message.bot {
@@ -210,4 +193,8 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.hidden {
+  display: none !important;
 }
