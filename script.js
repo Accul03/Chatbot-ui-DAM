@@ -1,49 +1,44 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chatbot Embed</title>
-  <link rel="stylesheet" href="../style.css" />
-</head>
-<body>
+document.addEventListener('DOMContentLoaded', () => {
+  const sendMessage = document.getElementById('sendMessage');
+  const userInput = document.getElementById('userInput');
+  const chatMessages = document.getElementById('chatMessages');
 
-  <!-- 💬 Chat Widget -->
-  <div class="chat-container" id="chatContainer">
-    <div class="chat-header">
-      <span>Chatten Sie mit uns, wir sind online!</span>
-      <button id="closeChat">×</button>
-    </div>
+  sendMessage.addEventListener('click', handleSend);
 
-    <div class="chat-body">
-      <!-- 🧑‍💼 Agent Info -->
-      <div class="chat-agent">
-        <img src="https://www.erecht24.de/images/avatar-chatbot.png" alt="Anastasia" />
-        <div class="agent-info">
-          <strong>Anastasia</strong><br />
-          <small><span class="status-dot"></span> Online</small>
-        </div>
-      </div>
+  userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
 
-      <!-- 👋 Begrüßung -->
-      <div class="chat-welcome">
-        Willkommen im Chat! 👋<br />
-        Schön, dass Sie da sind!<br />
-        Wie können wir Ihnen weiterhelfen? 🚀💬
-      </div>
+  function handleSend() {
+    const msg = userInput.value.trim();
+    if (!msg) return;
 
-      <!-- 📥 Nachrichtenverlauf -->
-      <div class="chat-messages" id="chatMessages"></div>
+    appendMessage(msg, 'user');
+    userInput.value = '';
 
-      <!-- ✏️ Eingabefeld -->
-      <div class="chat-input">
-        <input type="text" id="userInput" placeholder="Nachricht..." autocomplete="off" />
-        <button id="sendMessage">➤</button>
-      </div>
-    </div>
-  </div>
+    fetch('https://vietze.app.n8n.cloud/webhook/cc2c09e8-6b0a-4d02-8c7e-c2d15d8014c2/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: msg })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const reply = data.reply || data.message || '🤖 Keine Antwort erhalten.';
+      appendMessage(reply, 'bot');
+    })
+    .catch(err => {
+      console.error('[Chatbot Error]', err);
+      appendMessage('⚠️ Verbindungsfehler mit dem Server.', 'bot');
+    });
+  }
 
-  <!-- 🔌 Verbindung zu Logik -->
-  <script src="../script.js"></script>
-</body>
-</html>
+  function appendMessage(text, sender = 'bot') {
+    const div = document.createElement('div');
+    div.className = `chat-message ${sender}`;
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+});
