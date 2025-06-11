@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function appendMessage(text, sender = 'bot') {
     const div = document.createElement('div');
     div.className = `chat-message ${sender}`;
-    div.textContent = text;
+    div.innerHTML = parseMarkdown(text); // ✅ Jetzt wird HTML richtig gerendert!
     chatMessages.appendChild(div);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
