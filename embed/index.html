@@ -3,42 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>N8n Chatbot</title>
+  <title>Chat UI</title>
   <link rel="stylesheet" href="../style.css" />
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: transparent;
       height: 100%;
-      overflow: hidden;
+      background: white;
     }
 
     .chat-container {
-      width: 100%;
       height: 100%;
       box-shadow: none;
-      border-radius: 0;
-    }
-
-    .chat-header {
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-      overflow: hidden;
+      border-radius: 12px;
     }
   </style>
 </head>
 <body>
 
-  <!-- 💬 Chat Widget -->
-  <div class="chat-container" id="chatContainer">
+  <div class="chat-container">
     <div class="chat-header">
       <span>Chatten Sie mit uns, wir sind online!</span>
-      <button id="closeChat" style="display:none">×</button>
     </div>
 
     <div class="chat-body">
-      <!-- 🧑‍💼 Agent Info -->
       <div class="chat-agent">
         <img src="https://www.erecht24.de/images/avatar-chatbot.png" alt="Anastasia" />
         <div class="agent-info">
@@ -47,17 +36,14 @@
         </div>
       </div>
 
-      <!-- 👋 Begrüßungstext -->
       <div class="chat-welcome">
         Willkommen im Chat! 👋<br />
         Schön, dass Sie da sind!<br />
         Wie können wir Ihnen weiterhelfen? 🚀💬
       </div>
 
-      <!-- 📥 Chatverlauf -->
       <div class="chat-messages" id="chatMessages"></div>
 
-      <!-- ✏️ Eingabe -->
       <div class="chat-input">
         <input type="text" id="userInput" placeholder="Nachricht..." autocomplete="off" />
         <button id="sendMessage">➤</button>
