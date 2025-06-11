@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N8n Chatbot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 💬 Floating Chat Button -->
+  <div class="chat-button" id="chatToggle">
+    <span class="chat-icon">💬</span>
+  </div>
+
+  <!-- 💬 Chat Widget -->
+  <div class="chat-container hidden" id="chatContainer">
+    <div class="chat-header">
+      <span>Chatten Sie mit uns, wir sind online!</span>
+      <button id="closeChat">×</button>
+    </div>
+
+    <div class="chat-body">
+      <!-- 🧑‍💼 Agent Info -->
+      <div class="chat-agent">
+        <img src="https://www.erecht24.de/images/avatar-chatbot.png" alt="Anastasia" />
+        <div class="agent-info">
+          <strong>Anastasia</strong><br />
+          <small><span class="status-dot"></span> Online</small>
+        </div>
+      </div>
+
+      <!-- 👋 Begrüßungstext -->
+      <div class="chat-welcome">
+        Willkommen im Chat! 👋<br />
+        Schön, dass Sie da sind!<br />
+        Wie können wir Ihnen weiterhelfen? 🚀💬
+      </div>
+
+      <!-- 📥 Chatverlauf -->
+      <div class="chat-messages" id="chatMessages"></div>
+
+      <!-- ✏️ Eingabe -->
+      <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Nachricht..." autocomplete="off" />
+        <button id="sendMessage">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N8n Chatbot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 💬 Floating Chat Button -->
+  <div class="chat-button" id="chatToggle">
+    <span class="chat-icon">💬</span>
+  </div>
+
+  <!-- 💬 Chat Widget -->
+  <div class="chat-container hidden" id="chatContainer">
+    <div class="chat-header">
+      <span>Chatten Sie mit uns, wir sind online!</span>
+      <button id="closeChat">×</button>
+    </div>
+
+    <div class="chat-body">
+      <!-- 🧑‍💼 Agent Info -->
+      <div class="chat-agent">
+        <img src="https://www.erecht24.de/images/avatar-chatbot.png" alt="Anastasia" />
+        <div class="agent-info">
+          <strong>Anastasia</strong><br />
+          <small><span class="status-dot"></span> Online</small>
+        </div>
+      </div>
+
+      <!-- 👋 Begrüßungstext -->
+      <div class="chat-welcome">
+        Willkommen im Chat! 👋<br />
+        Schön, dass Sie da sind!<br />
+        Wie können wir Ihnen weiterhelfen? 🚀💬
+      </div>
+
+      <!-- 📥 Chatverlauf -->
+      <div class="chat-messages" id="chatMessages"></div>
+    </div>
+
+    <!-- ✏️ Eingabe -->
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Nachricht..." autocomplete="off" />
+      <button id="sendMessage">➤</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
