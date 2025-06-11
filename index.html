@@ -1,27 +1,87 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot Widget Loader</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chatbot Widget</title>
+  <style>
+    .chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #0098dd;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .chat-iframe-container {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 380px;
+      height: 600px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1001;
+    }
+
+    .chat-iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .chat-close {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #999;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- 💬 Chat Button -->
+  <div class="chat-toggle" id="chatToggle">💬</div>
+
+  <!-- 💬 Iframe mit Close -->
+  <div class="chat-iframe-container" id="chatContainer">
+    <button class="chat-close" id="closeChat">×</button>
+    <iframe src="https://chatbot-ui-dam.vercel.app/embed"></iframe>
+  </div>
+
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const iframe = document.createElement('iframe');
-      iframe.src = "https://chatbot-ui-dam.vercel.app/embed";
-      iframe.style.position = 'fixed';
-      iframe.style.bottom = '20px';
-      iframe.style.right = '20px';
-      iframe.style.width = '380px';
-      iframe.style.height = '600px';
-      iframe.style.border = 'none';
-      iframe.style.zIndex = '9999';
-      iframe.style.borderRadius = '12px';
-      iframe.style.boxShadow = '0 0 16px rgba(0, 0, 0, 0.2)';
-      document.body.appendChild(iframe);
+    const toggle = document.getElementById('chatToggle');
+    const chatContainer = document.getElementById('chatContainer');
+    const closeBtn = document.getElementById('closeChat');
+
+    toggle.addEventListener('click', () => {
+      chatContainer.style.display = 'block';
+      toggle.style.display = 'none';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      chatContainer.style.display = 'none';
+      toggle.style.display = 'flex';
     });
   </script>
+
 </body>
 </html>
-
