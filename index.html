@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chatbot Widget</title>
   <style>
+    /* 🔵 Floating Chat Bubble */
     .chat-toggle {
       position: fixed;
       bottom: 20px;
@@ -19,9 +20,10 @@
       line-height: 60px;
       cursor: pointer;
       z-index: 10000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
+    /* 🔲 Iframe Container */
     .chat-iframe-container {
       position: fixed;
       bottom: 90px;
@@ -37,9 +39,10 @@
       height: 100%;
       border: none;
       border-radius: 12px;
-      box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
     }
 
+    /* ❌ Schließen Button */
     .chat-close {
       position: absolute;
       top: 6px;
@@ -56,30 +59,30 @@
 </head>
 <body>
 
-  <!-- Bubble -->
+  <!-- 💬 Bubble-Button -->
   <div class="chat-toggle" id="chatToggle">💬</div>
 
-  <!-- Chat-Frame -->
+  <!-- 🧠 Chat-Frame -->
   <div class="chat-iframe-container" id="chatContainer">
     <button class="chat-close" id="closeChat">×</button>
-    <iframe src="https://chatbot-ui-dam.vercel.app/embed"></iframe>
+    <iframe src="embed/index.html"></iframe>
   </div>
 
+  <!-- 📜 JS für Toggle -->
   <script>
-    const toggle = document.getElementById('chatToggle');
-    const chat = document.getElementById('chatContainer');
-    const close = document.getElementById('closeChat');
+    const chatToggle = document.getElementById('chatToggle');
+    const chatContainer = document.getElementById('chatContainer');
+    const closeChat = document.getElementById('closeChat');
 
-    toggle.addEventListener('click', () => {
-      chat.style.display = 'block';
-      toggle.style.display = 'none';
+    chatToggle.addEventListener('click', () => {
+      chatContainer.style.display = 'block';
+      chatToggle.style.display = 'none';
     });
 
-    close.addEventListener('click', () => {
-      chat.style.display = 'none';
-      toggle.style.display = 'block';
+    closeChat.addEventListener('click', () => {
+      chatContainer.style.display = 'none';
+      chatToggle.style.display = 'flex';
     });
   </script>
-
 </body>
 </html>
