@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendMessage = document.getElementById('sendMessage');
   const userInput = document.getElementById('userInput');
   const chatMessages = document.getElementById('chatMessages');
+  const intro = document.getElementById('chatIntro'); // <--- falls du Intro ausblenden willst
 
   // Nachrichten senden per Button
   sendMessage.addEventListener('click', handleSend);
@@ -19,12 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  let introHidden = false;
   function handleSend() {
     const msg = userInput.value.trim();
     if (!msg) return;
 
     appendMessage(msg, 'user');
     userInput.value = '';
+
+    // Intro nach erster Nachricht ausblenden
+    if (!introHidden && intro) {
+      intro.classList.add('hidden');
+      introHidden = true;
+    }
 
     // POST an N8n Webhook
     fetch('https://vietze.app.n8n.cloud/webhook/cc2c09e8-6b0a-4d02-8c7e-c2d15d8014c2/chat', {
@@ -36,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(res => res.json())
     .then(data => {
+      // Robust: nimmt .reply ODER .message, fallback-Text wenn nix da
       const reply = data.reply || data.message || '🤖 Keine Antwort erhalten.';
       appendMessage(reply, 'bot');
     })
